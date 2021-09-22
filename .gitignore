@@ -1,2 +1,19 @@
+# General:
+.exercism/
+
 # TypeScript:
 node_modules/
+
+# Clojure:
+target/
+.lein-failures
+
+# Elixir:
+_build/
+
+# Erlang:
+_build/
+
+# Kotlin:
+build/
+.gradle/
