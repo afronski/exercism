@@ -17,3 +17,11 @@ _build/
 # Kotlin:
 build/
 .gradle/
+
+# Python:
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Rust:
+target/
