@@ -1,56 +1,32 @@
-enum Nucleotide {
-  G = 'G',
-  C = 'C',
-  T = 'T',
-  A = 'A',
-  U = 'U'
+const DNA = { 'A': 'A', 'C': 'C', 'G': 'G', 'T': 'T' } as const;
+const RNA = { 'A': 'A', 'C': 'C', 'G': 'G', 'U': 'U' } as const;
+
+type DNANucleotide = keyof typeof DNA;
+type RNANucleotide = keyof typeof RNA;
+
+type DNAStrand = string & { isDNAStrand: true };
+
+const DNA2RNA: Record<DNANucleotide, RNANucleotide> = {
+  G: 'C',
+  C: 'G',
+  T: 'A',
+  A: 'U'
 };
 
-class DNANucleotide {
-  private value: Nucleotide;
+const notDNANucleotides =
+  (letter: string): letter is DNANucleotide => !DNA.hasOwnProperty(letter)
 
-  private validate(dna: string): boolean {
-    return dna.length === 1 && dna in Nucleotide && dna !== Nucleotide.U;
+const isDNAStrand =
+  (strand: string): strand is DNAStrand => strand.split('').filter(notDNANucleotides).length === 0
+
+export const toRna = (input: string): string => {
+  if (!isDNAStrand(input)) {
+    throw new Error("Invalid input DNA.");
   }
 
-  private constructor(dna: string) {
-    if (!this.validate(dna)) {
-      throw new Error('Invalid input DNA.');
-    }
-
-    this.value = <Nucleotide> dna;
-  }
-
-  toString() {
-    return this.value;
-  }
-
-  toRNA(): Nucleotide {
-    return DNANucleotide.TO_RNA[this.value];
-  }
-
-  static build(fragment: string): DNANucleotide {
-    return new DNANucleotide(fragment);
-  }
-
-  static G = new DNANucleotide(Nucleotide.G);
-  static C = new DNANucleotide(Nucleotide.C);
-  static T = new DNANucleotide(Nucleotide.T);
-  static A = new DNANucleotide(Nucleotide.A);
-
-  private static TO_RNA = {
-    [Nucleotide.G]: Nucleotide.C,
-    [Nucleotide.C]: Nucleotide.G,
-    [Nucleotide.T]: Nucleotide.A,
-    [Nucleotide.A]: Nucleotide.U,
-    [Nucleotide.U]: Nucleotide.U
-  }
-}
-
-export function toRna(dna: string): string {
-  return dna
+  return input
           .toLocaleUpperCase()
           .split('')
-          .map((fragment) => DNANucleotide.build(fragment).toRNA())
+          .map((letter) => DNA2RNA[<DNANucleotide> letter])
           .join('');
-}
+};
