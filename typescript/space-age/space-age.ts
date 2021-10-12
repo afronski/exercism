@@ -1,4 +1,4 @@
-const YEAR_IN_SECONDS_ON_EARTH = 31557600;
+const YEAR_IN_SECONDS_ON_EARTH = 31_557_600;
 
 const PLANETS = [
   'mercury',
@@ -31,5 +31,5 @@ export function age(planet: string, seconds: number): number {
 
   const years_for_planet: number = seconds / ORBITAL_PERIODS_IN_SECONDS[<Planet> planet];
 
-  return Math.round(years_for_planet * 100) / 100;
+  return Number(years_for_planet.toFixed(2));
 };
