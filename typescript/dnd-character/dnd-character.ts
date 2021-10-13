@@ -23,14 +23,11 @@ export class DnDCharacter {
   }
 
   public static generateAbilityScore(): number {
-    const randomValuesForAbilities =
-      [ ...new Array(4) ]
-        .map(DnDCharacter.rollTheDice.bind(this, ABILITY_DICE_SIDES))
-        .sort();
-
-      randomValuesForAbilities.shift();
-
-      return randomValuesForAbilities.reduce((value, acc) => acc + value, 0);
+    return [ ...Array(4) ]
+            .map(DnDCharacter.rollTheDice.bind(this, ABILITY_DICE_SIDES))
+            .sort((a, b) => a - b)
+            .slice(0, 3)
+            .reduce((value, acc) => acc + value, 0);
   }
 
   public static getModifierFor(abilityValue: number): number {
@@ -38,6 +35,6 @@ export class DnDCharacter {
   }
 
   private static rollTheDice(sides: number): number {
-    return Math.floor(Math.random() * (sides - 1)) + 1
+    return Math.floor(Math.random() * sides) + 1
   }
 }
