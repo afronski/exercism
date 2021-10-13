@@ -1,4 +1,5 @@
 const ABILITY_DICE_SIDES = 6;
+const INITIAL_HITPOINTS = 10;
 
 export class DnDCharacter {
   public readonly strength: number;
@@ -9,7 +10,7 @@ export class DnDCharacter {
   public readonly charisma: number;
 
   public get hitpoints() {
-    return 10 + DnDCharacter.getModifierFor(this.constitution);
+    return INITIAL_HITPOINTS + DnDCharacter.getModifierFor(this.constitution);
   }
 
   constructor() {
