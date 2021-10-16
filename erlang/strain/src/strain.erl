@@ -17,8 +17,4 @@ keep(_Fn, [], Acc)     -> Acc;
 keep(Fn, [H | T], Acc) -> keep(Fn, T, Acc ++ evaluator(Fn, H, true)).
 
 -spec discard(function(), list()) -> list().
-discard(Fn, List) -> discard(Fn, List, []).
-
--spec discard(function(), list(), list()) -> list().
-discard(_Fn, [], Acc)     -> Acc;
-discard(Fn, [H | T], Acc) -> discard(Fn, T, Acc ++ evaluator(Fn, H, false)).
+discard(Fn, List) -> keep(fun (X) -> not(Fn(X)) end, List).
