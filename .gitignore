@@ -27,3 +27,7 @@ __pycache__/
 
 # Rust:
 target/
+
+# Fsharp:
+fsharp/**/bin/
+fsharp/**/obj/
