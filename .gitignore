@@ -1,5 +1,7 @@
-# General:
+# General and IDE:
 .exercism/
+.vscode/
+.idea/
 
 # TypeScript:
 node_modules/
