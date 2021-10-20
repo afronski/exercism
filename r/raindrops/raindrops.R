@@ -1,10 +1,9 @@
-raindrops <- function(number) {
-  result <- ""
+raindrops <- function(number, divisors = list(Pling = 3, Plang = 5, Plong = 7)) {
+  noises <- names(divisors)[number %% unlist(divisors) == 0]
 
-  if (number %% 3 == 0) result <- paste(result, "Pling", sep = "")
-  if (number %% 5 == 0) result <- paste(result, "Plang", sep = "")
-  if (number %% 7 == 0) result <- paste(result, "Plong", sep = "")
-  if (result == "") result <- toString(number)
-
-  result
+  if (length(noises) > 0) {
+    paste(noises, collapse = "")
+  } else {
+    as.character(number)
+  }
 }
