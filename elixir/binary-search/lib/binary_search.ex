@@ -21,7 +21,7 @@ defmodule BinarySearch do
   def search(numbers, key), do: search(Tuple.to_list(numbers), key, 0, tuple_size(numbers) - 1)
 
   @spec search(tuple, integer, integer, integer) :: integer | :not_found
-  def search(numbers, _key, low, high) when high < low, do: :not_found
+  def search(_numbers, _key, low, high) when high < low, do: :not_found
   def search(numbers, key, low, high) do
     middle = div(low + high, 2)
     item = Enum.at(numbers, middle)
