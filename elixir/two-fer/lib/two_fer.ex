@@ -1,4 +1,8 @@
 defmodule TwoFer do
+  @moduledoc """
+  This is a module that contains `two_fer` function.
+  """
+
   @doc """
   Two-fer or 2-fer is short for two for one. One for you and one for me.
   """
