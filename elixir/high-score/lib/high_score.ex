@@ -9,11 +9,5 @@ defmodule HighScore do
 
   def reset_score(scores, name), do: Map.put(scores, name, @starting_score)
 
-  def update_score(scores, name, score) do
-    {_, updated} = Map.get_and_update(scores, name,
-      fn (nil)            -> {nil, score};
-         (existing_score) -> {existing_score, existing_score + score}
-      end)
-    updated
-  end
+  def update_score(scores, name, score), do: Map.update(scores, name, score, fn(old) -> old + score end)
 end
