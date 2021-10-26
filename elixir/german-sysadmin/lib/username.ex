@@ -1,15 +1,19 @@
 defmodule Username do
   def sanitize(username) do
     username
-    |> Enum.map(&character_whitelist/1)
+    |> Enum.map(&map_character_according_to_whitelist/1)
     |> Enum.flat_map(&(&1))
   end
 
-  defp character_whitelist(ch) when (ch >= ?a and ch <= ?z), do: [ ch ]
-  defp character_whitelist(?_), do: [ ?_ ]
-  defp character_whitelist(?ö), do: [ ?o, ?e ]
-  defp character_whitelist(?ü), do: [ ?u, ?e ]
-  defp character_whitelist(?ä), do: [ ?a, ?e ]
-  defp character_whitelist(?ß), do: [ ?s, ?s ]
-  defp character_whitelist(ch), do: []
+  defp map_character_according_to_whitelist(char) do
+    case char do
+      ch when (ch >= ?a and ch <= ?z) -> [ ch ];
+      ?_                              -> [ ?_ ];
+      ?ö                              -> [ ?o, ?e ];
+      ?ü                              -> [ ?u, ?e ];
+      ?ä                              -> [ ?a, ?e ];
+      ?ß                              -> [ ?s, ?s ];
+      _                               -> []
+    end
+  end
 end
