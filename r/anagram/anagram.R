@@ -1,18 +1,13 @@
-sorted_letters <- function(word) {
-  paste(sort(unlist(strsplit(tolower(word), ''))), collapse = '')
+letters <- function(s) {
+  sapply(strsplit(tolower(s), ''), function(v) paste(sort(v), collapse = ''))
 }
 
 anagram <- function(subject, candidates) {
-  subject_letters <- sorted_letters(subject)
+  anagrams = candidates[letters(subject) == letters(candidates) & tolower(subject) != tolower(candidates)]
 
-  result <- c()
-  for(candidate in candidates) {
-    candidate_letters = sorted_letters(candidate)
-
-    if (subject_letters == candidate_letters & tolower(subject) != tolower(candidate)) {
-      result <- append(result, c(candidate))
-    }
+  if (length(anagrams) > 0) {
+    anagrams
+  } else {
+    c()
   }
-
-  result
 }
