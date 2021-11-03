@@ -16,5 +16,5 @@ defmodule CollatzConjecture do
   @spec calc(number :: pos_integer(), steps :: non_neg_integer()) :: non_neg_integer()
   defp calc(1, steps), do: steps
   defp calc(number, steps) when Integer.is_even(number), do: calc(div(number, 2), steps + 1)
-  defp calc(number, steps) when Integer.is_even(number), do: calc(3 * number + 1, steps + 1)
+  defp calc(number, steps) when Integer.is_odd(number), do: calc(3 * number + 1, steps + 1)
 end
