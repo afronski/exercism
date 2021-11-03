@@ -9,7 +9,7 @@ defmodule CollatzConjecture do
   def calc(input) when input > 0, do: calc(input, 0)
 
   @spec calc(number :: pos_integer(), steps :: non_neg_integer()) :: non_neg_integer()
-  def calc(1, steps), do: steps
-  def calc(number, steps) when rem(number, 2) == 0, do: calc(div(number, 2), steps + 1)
-  def calc(number, steps) when rem(number, 2) != 0, do: calc(3 * number + 1, steps + 1)
+  defp calc(1, steps), do: steps
+  defp calc(number, steps) when Integer.is_even(number), do: calc(div(number, 2), steps + 1)
+  defp calc(number, steps) when Integer.is_even(number), do: calc(3 * number + 1, steps + 1)
 end
