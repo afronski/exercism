@@ -1,5 +1,7 @@
-import datetime
+from datetime import timedelta
+
+Gs = timedelta(seconds = 10 ** 9)
 
 def add(moment):
-    return moment + datetime.timedelta(0, 1_000_000_000)
+    return moment + Gs
 
