@@ -1,3 +1,7 @@
+"""
+Module for calculating cooking time for Lasagna.
+"""
+
 EXPECTED_BAKE_TIME = 40
 PREPARATION_TIME = 2
 
