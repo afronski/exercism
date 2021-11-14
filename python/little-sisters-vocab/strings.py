@@ -1,3 +1,7 @@
+"""
+Simple module for managing Little Sister's Vocabulary exercises.
+"""
+
 import re
 
 JOINER = ' :: '
