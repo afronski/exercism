@@ -66,7 +66,7 @@ def approx_average_is_average(hand):
     first_and_last_average = card_average([ hand[0], hand[-1] ])
     full_average = card_average(hand)
 
-    return median == full_average or first_and_last_average == full_average
+    return full_average in [ median, first_and_last_average ]
 
 
 def average_even_is_average_odd(hand):
