@@ -1,7 +1,7 @@
 #ifndef RESISTOR_COLOR_H
 #define RESISTOR_COLOR_H
 
-typedef enum {
+typedef enum RESISTOR_BAND {
   BLACK = 0,
   BROWN,
   RED,
@@ -11,10 +11,11 @@ typedef enum {
   BLUE,
   VIOLET,
   GREY,
-  WHITE
+  WHITE,
+  TYPES
 } resistor_band_t;
 
-const resistor_band_t* colors();
+resistor_band_t* colors();
 int color_code(resistor_band_t code);
 
 #endif

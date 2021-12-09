@@ -1,13 +1,13 @@
 #include "resistor_color.h"
 
-static const resistor_band_t color_codes_constant[] = {
-  BLACK, BROWN, RED,
-  ORANGE, YELLOW, GREEN,
-  BLUE, VIOLET, GREY, WHITE
- };
+resistor_band_t* colors() {
+    static resistor_band_t color[TYPES];
 
-const resistor_band_t* colors() {
-  return color_codes_constant;
+    for(int i = BLACK; i < TYPES; ++i){
+        color[i] = i;
+    }
+
+    return color;
 }
 
 int color_code(resistor_band_t code) {
