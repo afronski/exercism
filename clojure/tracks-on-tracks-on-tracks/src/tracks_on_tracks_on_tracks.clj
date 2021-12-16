@@ -1,9 +1,8 @@
 (ns tracks-on-tracks-on-tracks)
 
-(defn new-list
+(def new-list
   "Creates an empty list of languages to practice."
-  []
-  ())
+  list)
 
 (defn add-language
   "Adds a language to the list."
@@ -18,7 +17,7 @@
 (defn remove-language
   "Removes the the first language added to the list."
   [lang-list]
-  (drop 1 lang-list))
+  (rest lang-list))
 
 (defn count-languages
   "Returns the total number of languages on the list."
@@ -33,7 +32,7 @@
   (->> (new-list)
        (add-language "Clojure")
        (add-language "Lisp")
-       (remove-language)
+       remove-language
        (add-language "Java")
        (add-language "JavaScript")
-       (count)))
+       count))
