@@ -16,7 +16,7 @@
   (reduce + (take n birds)))
 
 (defn busy-days [birds]
-  (count (filter #(>= % 5:) birds)))
+  (count (filter #(>= % 5) birds)))
 
 (defn odd-week? [birds]
   (let [even-days (take-nth 2 birds)
