@@ -1,5 +1,11 @@
 defmodule NameBadge do
-  def print(id, name, nil), do: print(id, name, "owner")
-  def print(nil, name, department), do: "#{name} - #{department |> String.upcase()}"
-  def print(id, name, department), do: "[#{id}] - #{print(nil, name, department)}"
+  @owner "OWNER"
+  @separator " - "
+
+  def print(id, name, department) do
+    id_part = if id, do: "[#{id}]"
+    dep_part = if department, do: String.upcase(department), else: @owner
+
+    [id_part, name, dep_part] |> Enum.reject(&is_nil/1) |> Enum.join(@separator)
+  end
 end
