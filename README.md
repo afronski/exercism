@@ -1,4 +1,4 @@
-# Solutions for *Exercism* assignments
+# Solutions for [*Exercism*](https://exercism.org) assignments
 
 ## License
 
