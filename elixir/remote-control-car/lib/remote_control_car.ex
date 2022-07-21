@@ -6,8 +6,7 @@ defmodule RemoteControlCar do
     distance_driven_in_meters: 0
   ]
 
-  def new(), do: %__MODULE__{nickname: "none"}
-  def new(nickname), do: %__MODULE__{nickname: nickname}
+  def new(nickname \\ "none"), do: %__MODULE__{nickname: nickname}
 
   def display_distance(%RemoteControlCar{} = remote_car) do
     "#{remote_car.distance_driven_in_meters} meters"
